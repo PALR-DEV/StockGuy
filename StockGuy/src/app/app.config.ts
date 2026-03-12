@@ -5,7 +5,14 @@ import Aura from '@primeuix/themes/aura';
 
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(), providePrimeNG({ ripple: true, theme: { preset: Aura } })],
-};  
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideStore(),
+    providePrimeNG({ ripple: true, theme: { preset: Aura } }),
+    provideHttpClient(),
+  ],
+};
