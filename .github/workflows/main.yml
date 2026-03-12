@@ -1,0 +1,41 @@
+name: Version bump (patch)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-version:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bump package.json patch version
+        run: |
+          node -e "
+          const fs=require('fs');
+          const p='package.json';
+          const j=JSON.parse(fs.readFileSync(p,'utf8'));
+          const [maj,min,pat]=(j.version||'0.0.0').split('.').map(n=>parseInt(n,10)||0);
+          j.version=[maj,min,pat+1].join('.');
+          fs.writeFileSync(p, JSON.stringify(j,null,2)+'\n');
+          console.log('New version:', j.version);
+          "
+
+      - name: Create Pull Request with version bump
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/version-bump
+          delete-branch: true
+          title: "chore: bump version"
+          commit-message: "chore: bump version"
+          body: "Automated patch version bump in package.json."
