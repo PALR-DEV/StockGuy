@@ -1,43 +1,81 @@
-
-<div class="min-h-screen bg-linear-to-br from-gray-950 via-gray-900 to-slate-900 text-white flex flex-col">
-
-  <nav class="flex items-center justify-between px-8 py-5 border-b border-white/10">
+<div
+  class="min-h-screen bg-linear-to-br from-gray-950 via-gray-900 to-slate-900 text-white flex flex-col"
+>
+  <nav
+    class="flex items-center justify-between px-8 py-5 border-b border-white/10"
+  >
     <div class="flex items-center gap-2">
-      <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      <svg
+        class="w-8 h-8 text-emerald-400"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+        />
       </svg>
       <span class="text-xl font-bold tracking-tight">StockGuy</span>
     </div>
     <div class="flex items-center gap-3">
-      <p-button label="Login" [text]="true" styleClass="text-white hover:text-emerald-400" />
-      <p-button label="Register" styleClass="bg-emerald-500 hover:bg-emerald-400 border-0 text-white font-semibold px-5" />
+      <p-button
+        label="Login"
+        [text]="true"
+        styleClass="text-white hover:text-emerald-400"
+      />
+      <p-button
+        label="Register"
+        styleClass="bg-emerald-500 hover:bg-emerald-400 border-0 text-white font-semibold px-5"
+      />
     </div>
   </nav>
 
-  <main class="flex flex-col items-center justify-center flex-1 text-center px-6 py-24 gap-8">
-    <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 text-emerald-400 text-sm font-medium">
+  <main
+    class="flex flex-col items-center justify-center flex-1 text-center px-6 py-24 gap-8"
+  >
+    <div
+      class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 text-emerald-400 text-sm font-medium"
+    >
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
       Markets are open
     </div>
 
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl">
+    <h1
+      class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl"
+    >
       Invest Smarter,<br />
-      <span class="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-400">
+      <span
+        class="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-400"
+      >
         Trade Confidently
       </span>
     </h1>
 
     <p class="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed">
-      Your one-stop platform for real-time stock data, portfolio tracking, and market insights — all in one place.
+      Your one-stop platform for real-time stock data, portfolio tracking, and
+      market insights — all in one place.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
-      <p-button label="Get Started Free" styleClass="bg-emerald-500 hover:bg-emerald-400 border-0 text-white font-bold text-base px-8 py-3 rounded-xl" />
-      <p-button label="See How It Works" [outlined]="true" styleClass="border-white/20 text-white hover:border-white/50 text-base px-8 py-3 rounded-xl" />
+      <p-button
+        label="Get Started Free"
+        (click)="test()"
+        styleClass="bg-emerald-500 hover:bg-emerald-400 border-0 text-white font-bold text-base px-8 py-3 rounded-xl"
+      />
+      <p-button
+        label="See How It Works"
+        [outlined]="true"
+        styleClass="border-white/20 text-white hover:border-white/50 text-base px-8 py-3 rounded-xl"
+      />
     </div>
   </main>
 
-  <div class="border-t border-white/10 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+  <div
+    class="border-t border-white/10 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10"
+  >
     <div class="flex flex-col items-center py-6 px-4 gap-1">
       <span class="text-3xl font-bold text-white">10K+</span>
       <span class="text-gray-500 text-sm">Active Users</span>
@@ -55,43 +93,97 @@
       <span class="text-gray-500 text-sm">Market Data</span>
     </div>
   </div>
-
 </div>
 
 <div class="bg-gray-950 text-white py-24 px-6">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Everything you need to invest well</h2>
-    <p class="text-gray-500 text-center mb-16 max-w-xl mx-auto">Powerful tools built for both beginners and seasoned investors.</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+      Everything you need to invest well
+    </h2>
+    <p class="text-gray-500 text-center mb-16 max-w-xl mx-auto">
+      Powerful tools built for both beginners and seasoned investors.
+    </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors">
-        <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 16l4-4 4 4 4-8" />
+      <div
+        class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors"
+      >
+        <div
+          class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4"
+        >
+          <svg
+            class="w-6 h-6 text-emerald-400"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 3v18h18M7 16l4-4 4 4 4-8"
+            />
           </svg>
         </div>
         <h3 class="font-semibold text-lg mb-2">Live Charts</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Track price movements in real time with interactive, detailed charts for any stock.</p>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Track price movements in real time with interactive, detailed charts
+          for any stock.
+        </p>
       </div>
 
-      <div class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors">
-        <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+      <div
+        class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors"
+      >
+        <div
+          class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4"
+        >
+          <svg
+            class="w-6 h-6 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 7h18M3 12h18M3 17h18"
+            />
           </svg>
         </div>
         <h3 class="font-semibold text-lg mb-2">Portfolio Manager</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Organize and monitor all your holdings in one dashboard with performance insights.</p>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Organize and monitor all your holdings in one dashboard with
+          performance insights.
+        </p>
       </div>
 
-      <div class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors">
-        <div class="w-12 h-12 bg-violet-500/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      <div
+        class="bg-gray-900 rounded-2xl p-6 border border-white/10 hover:border-emerald-500/40 transition-colors"
+      >
+        <div
+          class="w-12 h-12 bg-violet-500/10 rounded-xl flex items-center justify-center mb-4"
+        >
+          <svg
+            class="w-6 h-6 text-violet-400"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+            />
           </svg>
         </div>
         <h3 class="font-semibold text-lg mb-2">Smart Alerts</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Set price targets and get notified instantly when your stocks hit key levels.</p>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Set price targets and get notified instantly when your stocks hit key
+          levels.
+        </p>
       </div>
     </div>
   </div>
