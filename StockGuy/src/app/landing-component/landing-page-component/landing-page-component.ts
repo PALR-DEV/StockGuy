@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { StockApiService } from '../../stock-module/stock-crud/api.service';
 import { environment } from '../../environments/environment';
+import { StockApiService } from '../+state/api.service';
 
 @Component({
   selector: 'app-landing-page-component',
