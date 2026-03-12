@@ -15,7 +15,7 @@ export class StockApiService {
     console.log(test);
     const response = this.http
       .get(
-        `${this.baseStockUrl}function=${payload.function}&symbol=${payload.function}&apikey=${payload.apiKey}`,
+        `${this.baseStockUrl}function=${payload.function}&symbol=${payload.symbol}&apikey=${payload.apiKey}`,
       )
       .pipe(map((resp) => console.log(resp)));
 
