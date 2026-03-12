@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --surface-0: #ffffff;
+  --surface-900: #111827;
+}
+
+body {
+  background-color: var(--surface-0, #ffffff) !important;
+  color: var(--surface-900, #111827) !important;
+}
