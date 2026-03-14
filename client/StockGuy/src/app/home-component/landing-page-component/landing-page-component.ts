@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { environment } from '../../environments/environment';
+
 import { StockApiService } from '../+state/api.service';
 import { StockFacade } from '../stock.facade';
 import { AsyncPipe, JsonPipe } from '@angular/common';
@@ -13,14 +13,14 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
 })
 export class LandingPageComponent {
   private apiService = inject(StockApiService);
-  test(
-    payload = {
-      function: 'TIME_SERIES_WEEKLY',
-      symbol: 'IBM',
-      apiKey: environment.apiKey,
-    },
-  ) {
-    this.apiService.getDailyStock(payload).subscribe();
-  }
+  // test(
+  //   payload = {
+  //     function: 'TIME_SERIES_WEEKLY',
+  //     symbol: 'IBM',
+  //     apiKey: environment.apiKey,
+  //   },
+  // ) {
+  //   this.apiService.getDailyStock(payload).subscribe();
+  // }
 
 }
