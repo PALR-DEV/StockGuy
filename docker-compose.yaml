@@ -1,0 +1,21 @@
+version: '2.0'
+services:
+  api:
+    build:
+      context: ./server/stock-guy-api
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+
+  client:
+    build: 
+      context: ./client/StockGuy
+      dockerfile: Dockerfile
+
+    depends_on:
+      - api
+
+    ports:
+      - "4200:80"
