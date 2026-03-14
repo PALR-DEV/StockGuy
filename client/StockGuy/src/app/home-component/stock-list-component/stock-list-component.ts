@@ -10,7 +10,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
   templateUrl: './stock-list-component.html',
   styleUrl: './stock-list-component.css',
 })
-export class StockListComponent implements OnInit{
+export class StockListComponent implements OnInit {
   private stockFacade = inject(StockFacade);
   public stocks$ = this.stockFacade.stocks$;
   public loading$ = this.stockFacade.loading$;
