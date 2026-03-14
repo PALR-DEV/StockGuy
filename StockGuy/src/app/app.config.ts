@@ -4,14 +4,19 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 
 import { routes } from './app.routes';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
+import { provideEffects } from '@ngrx/effects';
+import { StockEffects } from './home-component/+state/stocks.effects';
+import { stockFeature } from './home-component/+state/stock.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore(),
+    provideEffects([StockEffects]),
+    provideState(stockFeature),
     providePrimeNG({ ripple: true, theme: { preset: Aura } }),
     provideHttpClient(),
   ],
