@@ -15,6 +15,6 @@ export class StockListComponent implements OnInit{
   public stocks$ = this.stockFacade.stocks$;
   public loading$ = this.stockFacade.loading$;
   ngOnInit(): void {
-    this.stockFacade.loadStocks();
+    // this.stockFacade.loadStocks();
   }
 }
