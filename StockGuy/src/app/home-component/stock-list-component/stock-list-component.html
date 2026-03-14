@@ -1,0 +1,33 @@
+@if(stocks$ | async; as stocks){
+<div class="card">
+    <p-table [value]="stocks|| []">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Currency</th>
+                <th>Exchange</th>
+                <th>Country</th>
+                <th>Type</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-stock>
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.currency }}</td>
+                <td>{{ stock.exchange }}</td>
+                <td>{{ stock.country }}</td>
+                <td>{{ stock.type }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+}@else {
+    <div class="card flex justify-center">
+            <p-progress-spinner ariaLabel="loading" />
+    </div>
+}
+
+
+<!-- https://query1.finance.yahoo.com/v8/finance/chart/LMT?period1=1773288000&period2=1773460800&interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-US&region=US&source=cosaic -->

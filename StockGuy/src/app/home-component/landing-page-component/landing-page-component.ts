@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { environment } from '../../environments/environment';
 import { StockApiService } from '../+state/api.service';
+import { StockFacade } from '../stock.facade';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-landing-page-component',
@@ -20,4 +22,5 @@ export class LandingPageComponent {
   ) {
     this.apiService.getDailyStock(payload).subscribe();
   }
+
 }
