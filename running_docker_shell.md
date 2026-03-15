@@ -1,21 +1,70 @@
-# make helper executable
+# Docker helper: `docker.sh`
+
+This document explains the small helper script `docker.sh` included in this repository. The script wraps `docker compose` / `docker-compose` commands to make common workflows (build, start, stop, logs, exec) easy and consistent across environments.
+
+**Purpose:** Provide a simple, reproducible CLI for building, running and inspecting the project's services without remembering long docker-compose commands.
+
+**Requirements:**
+- Docker installed
+- Docker Compose support (either `docker compose` plugin or legacy `docker-compose` binary)
+- Make the script executable with `chmod +x docker.sh`
+
+Quick start
+
+```shell
 chmod +x docker.sh
+./docker.sh up            # start all services (detached)
+./docker.sh up client     # start only the `client` service (detached)
+./docker.sh build         # build all service images
+./docker.sh build --no-cache client  # build the `client` image without cache
+```
 
-# build images
-./docker.sh build                 # build all services
-./docker.sh build --no-cache client
+Environment
 
-# start/stop services
-./docker.sh up                    # start all services (detached)
-./docker.sh up client             # start only client
-./docker.sh stop                  # stop all services
-./docker.sh down                  # stop and remove containers/networks
+- `COMPOSE_FILE` can be used to override the default compose file. Default: `docker-compose.yaml`.
 
-# inspect & interact
-./docker.sh logs client           # tail client logs
-./docker.sh ps                    # show compose status
-./docker.sh exec api bash         # open shell in api container
+Usage overview
 
+```text
+Usage: ./docker.sh <command> [service] [args...]
+
+Commands:
+  build [--no-cache] [service]    Build images (optional --no-cache)
+  up [service]                    Start services (detached)
+  start [service]                 Start existing containers
+  stop [service]                  Stop services
+  restart [service]               Restart services
+  down                            Stop and remove containers/networks
+  logs [service]                  Tail logs (ctrl-c to exit)
+  ps|status                       Show compose status
+  exec <service> <cmd...>         Exec a command in a running service
+  help                            Show this help
+```
+
+Common examples
+
+```shell
+./docker.sh build                     # build all images
+./docker.sh build --no-cache client   # build client image, no cache
+./docker.sh up                        # start all services in background
+./docker.sh logs client               # follow logs for client service
+./docker.sh exec api bash             # open a shell inside `api` container
+./docker.sh ps                        # show compose status
+./docker.sh down                      # stop and remove containers and networks
+```
+
+Notes and behavior
+
+- The script prefers the modern `docker compose` (plugin). If not available, it falls back to `docker-compose`.
+- It enforces strict shell options at the top of the script for safer execution.
+- Most commands accept an optional `service` argument to limit the action to a single service.
+
+Troubleshooting
+
+- If you see "Error: docker compose or docker-compose not found.", install Docker Desktop or the `docker-compose` binary depending on your platform.
+- If compose uses a non-standard file name, set the environment variable: `COMPOSE_FILE=custom.yml ./docker.sh up`.
+
+Full script
 
 ```shell
 #!/usr/bin/env bash
