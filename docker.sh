@@ -22,6 +22,7 @@ Commands:
   up [service]                    Start services (detached)
   dev                             Start development stack (docker-compose.dev.yml)
   start [service]                 Start existing containers
+  prune                           Remove unused docker images, containers, networks and cache
   stop [service]                  Stop services
   restart [service]               Restart services
   down                            Stop and remove containers/networks
@@ -95,6 +96,14 @@ case "$cmd" in
     $DC -f "$DEV_COMPOSE_FILE" up ${SERVICE_ARG:+$SERVICE_ARG}
     ;;
 
+  prune)
+    echo "Stopping compose stacks..."
+    $DC -f "$COMPOSE_FILE" down || true
+    $DC -f "$DEV_COMPOSE_FILE" down || true
+
+    echo "Cleaning unused Docker resources..."
+    docker system prune -a --volumes -f
+    ;;
 
   *)
     echo "Unknown command: $cmd" >&2
