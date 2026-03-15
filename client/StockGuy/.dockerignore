@@ -1,0 +1,9 @@
+node_modules
+dist
+.angular
+.git
+.gitignore
+Dockerfile
+docker-compose*
+npm-debug.log
+pnpm-debug.log
