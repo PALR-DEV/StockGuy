@@ -3,10 +3,11 @@ import { Table, TableModule } from 'primeng/table';
 import { StockFacade } from '../stock.facade';
 import { CommonModule } from '@angular/common';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { NavbarComponent } from "../../shared-components/navbar/navbar-component/navbar-component";
 
 @Component({
   selector: 'app-stock-list-component',
-  imports: [CommonModule, TableModule, ProgressSpinnerModule],
+  imports: [CommonModule, TableModule, ProgressSpinnerModule, NavbarComponent],
   templateUrl: './stock-list-component.html',
   styleUrl: './stock-list-component.css',
 })

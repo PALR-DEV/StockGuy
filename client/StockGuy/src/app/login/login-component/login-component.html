@@ -1,0 +1,39 @@
+<div class="h-screen w-full flex flex-col md:flex-row">
+	<!-- Left: Form area (full height) -->
+	<div class="w-full md:w-1/2 flex items-center justify-center bg-white p-8">
+		<div class="w-full max-w-md">
+			<div class="flex flex-col items-center mb-6">
+				<img src="https://imgs.search.brave.com/BLCH-KW3boE1QjQppgSjrqxTB7Ne4YgrenTP9l80hsc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/ZG93bmxvYWQub3Jn/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIx/LzA1L3JvYmluaG9v/ZC1sb2dvLTYucG5n" alt="CaribePay" class="w-20 h-20 mb-4" />
+				<h1 class="text-2xl font-semibold">Welcome Back</h1>
+			</div>
+
+			<form (submit)="handleSubmit(emailInput.value, passwordInput.value); $event.preventDefault()" class="space-y-4">
+				<div>
+					<label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+					<input pInputText #emailInput id="email" type="email" placeholder="Enter your email" class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+				</div>
+
+				<div>
+					<label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+					<input pInputText #passwordInput id="password" type="password" placeholder="Enter your password" class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+				</div>
+                
+                @if(error){
+                    <div class="text-sm text-red-600">{{ error }}</div>
+                }
+
+				<div>
+					<button pButton type="submit" class="w-full p-button-success py-2 rounded-md ">Sign In</button>
+				</div>
+			</form>
+
+			<p class="mt-4 text-sm text-gray-600 text-center">Don't have an account? <a (click)="goToSignup()" class="text-green-400 hover:underline cursor-pointer">Sign up</a></p>
+		</div>
+	</div>
+
+	<!-- Right: Image (covers full height on md+) -->
+	<div class="hidden md:block md:w-1/2 h-full">
+		<img src="https://media.wired.com/photos/5db37ea4dc63930009ef0036/master/pass/Business-Blockchain-Fatigue.jpg" alt="Login" class="object-cover h-full w-full" />
+	</div>
+</div>
+

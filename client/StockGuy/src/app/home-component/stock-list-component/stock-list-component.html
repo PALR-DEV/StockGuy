@@ -1,4 +1,5 @@
 @if(stocks$ | async; as stocks){
+    <app-navbar-component/>
 <div class="card">
     <p-table [value]="stocks|| []">
         <ng-template pTemplate="header">

@@ -11,6 +11,14 @@ export const routes: Routes = [
         path:'stocks',
         loadComponent: () => import('./home-component/stock-list-component/stock-list-component').then(m => m.StockListComponent)
     },
+
+    {
+        path:'login',
+        loadComponent: () => import('./login/login-component/login-component').then(m => m.LoginComponent)
+
+    },
     {path:'**', redirectTo: 'stocks', pathMatch: 'full'}
+
+
     
 ];
