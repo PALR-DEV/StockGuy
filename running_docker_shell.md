@@ -23,6 +23,7 @@ chmod +x docker.sh
 Environment
 
 - `COMPOSE_FILE` can be used to override the default compose file. Default: `docker-compose.yaml`.
+- `DEV_COMPOSE_FILE` can be used to run the enviorment in dev mode so the user can hot reload the client and server: `docker-compose.dev.yaml`.
 
 Usage overview
 
@@ -74,6 +75,7 @@ Full script
 set -euo pipefail
 
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yaml}"
+DEV_COMPOSE_FILE="${DEV_COMPOSE_FILE:-docker-compose.dev.yaml}"
 
 if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
   DC="docker compose"
@@ -91,7 +93,9 @@ Usage: $0 <command> [service] [args...]
 Commands:
   build [--no-cache] [service]    Build images (optional --no-cache)
   up [service]                    Start services (detached)
+  dev                             Start development stack (docker-compose.dev.yml)
   start [service]                 Start existing containers
+  prune                           Remove unused docker images, containers, networks and cache
   stop [service]                  Stop services
   restart [service]               Restart services
   down                            Stop and remove containers/networks
@@ -158,6 +162,20 @@ case "$cmd" in
 
   help|--help|-h)
     usage
+    ;;
+
+  dev)
+    SERVICE_ARG="${1:-}"
+    $DC -f "$DEV_COMPOSE_FILE" up ${SERVICE_ARG:+$SERVICE_ARG}
+    ;;
+
+  prune)
+    echo "Stopping compose stacks..."
+    $DC -f "$COMPOSE_FILE" down || true
+    $DC -f "$DEV_COMPOSE_FILE" down || true
+
+    echo "Cleaning unused Docker resources..."
+    docker system prune -a --volumes -f
     ;;
 
   *)
