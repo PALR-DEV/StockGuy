@@ -2,6 +2,7 @@
 set -euo pipefail
 
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yaml}"
+DEV_COMPOSE_FILE="${DEV_COMPOSE_FILE:-docker-compose.dev.yaml}"
 
 if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
   DC="docker compose"
@@ -19,6 +20,7 @@ Usage: $0 <command> [service] [args...]
 Commands:
   build [--no-cache] [service]    Build images (optional --no-cache)
   up [service]                    Start services (detached)
+  dev                             Start development stack (docker-compose.dev.yml)
   start [service]                 Start existing containers
   stop [service]                  Stop services
   restart [service]               Restart services
@@ -87,6 +89,12 @@ case "$cmd" in
   help|--help|-h)
     usage
     ;;
+
+  dev)
+    SERVICE_ARG="${1:-}"
+    $DC -f "$DEV_COMPOSE_FILE" up ${SERVICE_ARG:+$SERVICE_ARG}
+    ;;
+
 
   *)
     echo "Unknown command: $cmd" >&2

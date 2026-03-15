@@ -14,6 +14,7 @@ Quick start
 ```shell
 chmod +x docker.sh
 ./docker.sh up            # start all services (detached)
+./docker.sh dev          # start dev stack (angular + nest hot reload)
 ./docker.sh up client     # start only the `client` service (detached)
 ./docker.sh build         # build all service images
 ./docker.sh build --no-cache client  # build the `client` image without cache
