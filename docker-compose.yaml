@@ -2,7 +2,7 @@ version: '2.0'
 services:
   api:
     build:
-      context: ./server/stock-guy-api
+      context: ./server
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=production
