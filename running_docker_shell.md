@@ -33,6 +33,8 @@ Commands:
   build [--no-cache] [service]    Build images (optional --no-cache)
   up [service]                    Start services (detached)
   start [service]                 Start existing containers
+  dev                             Start development stack (docker-compose.dev.yml)
+  prune                           Remove unused docker images, containers, networks and cache
   stop [service]                  Stop services
   restart [service]               Restart services
   down                            Stop and remove containers/networks
